@@ -7,29 +7,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Bull_Eye.Logics;
 namespace Bull_Eye.WindowUI
 {
     public partial class FormSettings : Form
     {
         private const int k_MinimumNumberOfChances = 4;
         private const int k_RoundParameter = 7;
-        private int m_NumberOfChances;
+        private static int m_NumberOfChances;
         public FormSettings()
         {
             m_NumberOfChances = 0;
             InitializeComponent();
-            buttonNumberOfChances.Text = string.Format("Number of chances: {0}", (m_NumberOfChances + k_MinimumNumberOfChances).ToString());
+            buttonNumberOfChances.Text = string.Format("Number of chances: {0}", (m_NumberOfChances + GameLogics.k_MaxNumberCount).ToString());
         }
 
         private void buttonNumberOfChances_Click(object sender, EventArgs e)
         {
-            m_NumberOfChances = (++m_NumberOfChances) % k_RoundParameter;
-            buttonNumberOfChances.Text = string.Format("Number of chances: {0}", (m_NumberOfChances + k_MinimumNumberOfChances).ToString());
+            m_NumberOfChances = (++m_NumberOfChances) % GameLogics.k_MaxRange;
+            buttonNumberOfChances.Text = string.Format("Number of chances: {0}", (m_NumberOfChances + GameLogics.k_MaxNumberCount).ToString());
         }
-        public int NumberOfChances
+        public static int NumberOfChances
         {
-            get { return m_NumberOfChances; }
+            get { return m_NumberOfChances+ k_MinimumNumberOfChances; }
         }
 
         private void buttonStart_Click(object sender, EventArgs e)

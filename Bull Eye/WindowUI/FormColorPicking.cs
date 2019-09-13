@@ -13,6 +13,7 @@ namespace Bull_Eye.WindowUI
     public partial class FormColorPicking : Form
     {
         private Color m_PickedColor;
+
         public FormColorPicking()
         {
             InitializeComponent();
