@@ -78,7 +78,7 @@ namespace Bull_Eye.WindowUI
                         tempList.Add(tempAnswerButton);
                     }
 
-                    topLocation += additionToTopLocation - 5;
+                    topLocation += k_additionToTopLocation - 5;
                 }
 
                 m_Answers.Add(tempList);
