@@ -38,7 +38,7 @@
             // 
             this.buttonGuess1.BackColor = System.Drawing.Color.Black;
             this.buttonGuess1.Enabled = false;
-            this.buttonGuess1.Location = new System.Drawing.Point(20, 20);
+            this.buttonGuess1.Location = new System.Drawing.Point(20, 8);
             this.buttonGuess1.Name = "buttonGuess1";
             this.buttonGuess1.Size = new System.Drawing.Size(43, 43);
             this.buttonGuess1.TabIndex = 0;
@@ -48,7 +48,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.Black;
             this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(69, 20);
+            this.button1.Location = new System.Drawing.Point(69, 8);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(43, 43);
             this.button1.TabIndex = 1;
@@ -58,7 +58,7 @@
             // 
             this.button2.BackColor = System.Drawing.Color.Black;
             this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(118, 20);
+            this.button2.Location = new System.Drawing.Point(118, 8);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(43, 43);
             this.button2.TabIndex = 2;
@@ -69,7 +69,7 @@
             this.button3.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.button3.BackColor = System.Drawing.Color.Black;
             this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(167, 20);
+            this.button3.Location = new System.Drawing.Point(167, 8);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(43, 43);
             this.button3.TabIndex = 3;
