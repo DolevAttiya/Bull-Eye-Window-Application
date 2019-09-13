@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Bull_Eye.UI;
-using Bull_Eye.Logics;
+﻿using Bull_Eye.WindowUI;
+using System.Windows.Forms;
 
-// $G$ RUL-003 (-20) No submission report attached to the solution
 
 namespace Bull_Eye
 {
@@ -12,11 +8,9 @@ namespace Bull_Eye
     {
         public static void Main()
         {
-            Game game = new Game();
-            game.Start();
-            
-            Console.WriteLine("Press Enter to close the window");
-            Console.ReadLine();
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new FormSettings());
         }
     }
 }
