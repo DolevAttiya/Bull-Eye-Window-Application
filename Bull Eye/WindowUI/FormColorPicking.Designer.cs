@@ -41,7 +41,7 @@
             // buttonPurple
             // 
             this.buttonPurple.BackColor = System.Drawing.Color.Purple;
-            this.buttonPurple.Enabled = false;
+            this.buttonPurple.Enabled = true;
             this.buttonPurple.Location = new System.Drawing.Point(12, 12);
             this.buttonPurple.Name = "buttonPurple";
             this.buttonPurple.Size = new System.Drawing.Size(43, 43);
@@ -52,7 +52,7 @@
             // buttonRed
             // 
             this.buttonRed.BackColor = System.Drawing.Color.Red;
-            this.buttonRed.Enabled = false;
+            this.buttonRed.Enabled = true;
             this.buttonRed.Location = new System.Drawing.Point(61, 12);
             this.buttonRed.Name = "buttonRed";
             this.buttonRed.Size = new System.Drawing.Size(43, 43);
@@ -63,7 +63,7 @@
             // buttonLime
             // 
             this.buttonLime.BackColor = System.Drawing.Color.Lime;
-            this.buttonLime.Enabled = false;
+            this.buttonLime.Enabled = true;
             this.buttonLime.Location = new System.Drawing.Point(110, 12);
             this.buttonLime.Name = "buttonLime";
             this.buttonLime.Size = new System.Drawing.Size(43, 43);
@@ -74,7 +74,7 @@
             // buttonCyan
             // 
             this.buttonCyan.BackColor = System.Drawing.Color.Cyan;
-            this.buttonCyan.Enabled = false;
+            this.buttonLime.Enabled = true;
             this.buttonCyan.Location = new System.Drawing.Point(159, 12);
             this.buttonCyan.Name = "buttonCyan";
             this.buttonCyan.Size = new System.Drawing.Size(43, 43);
@@ -85,7 +85,7 @@
             // buttonBlue
             // 
             this.buttonBlue.BackColor = System.Drawing.Color.Blue;
-            this.buttonBlue.Enabled = false;
+            this.buttonLime.Enabled = true;
             this.buttonBlue.Location = new System.Drawing.Point(12, 61);
             this.buttonBlue.Name = "buttonBlue";
             this.buttonBlue.Size = new System.Drawing.Size(43, 43);
@@ -96,7 +96,7 @@
             // buttonYellow
             // 
             this.buttonYellow.BackColor = System.Drawing.Color.Yellow;
-            this.buttonYellow.Enabled = false;
+            this.buttonLime.Enabled = true;
             this.buttonYellow.Location = new System.Drawing.Point(61, 61);
             this.buttonYellow.Name = "buttonYellow";
             this.buttonYellow.Size = new System.Drawing.Size(43, 43);
@@ -107,7 +107,7 @@
             // buttonBrown
             // 
             this.buttonBrown.BackColor = System.Drawing.Color.Brown;
-            this.buttonBrown.Enabled = false;
+            this.buttonLime.Enabled = true;
             this.buttonBrown.Location = new System.Drawing.Point(110, 61);
             this.buttonBrown.Name = "buttonBrown";
             this.buttonBrown.Size = new System.Drawing.Size(43, 43);
@@ -118,7 +118,7 @@
             // buttonWhite
             // 
             this.buttonWhite.BackColor = System.Drawing.Color.White;
-            this.buttonWhite.Enabled = false;
+            this.buttonLime.Enabled = true;
             this.buttonWhite.Location = new System.Drawing.Point(159, 61);
             this.buttonWhite.Name = "buttonWhite";
             this.buttonWhite.Size = new System.Drawing.Size(43, 43);

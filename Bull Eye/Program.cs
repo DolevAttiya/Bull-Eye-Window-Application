@@ -1,4 +1,5 @@
-﻿using Bull_Eye.WindowUI;
+﻿using Bull_Eye.UI;
+using Bull_Eye.WindowUI;
 using System.Windows.Forms;
 
 
@@ -8,9 +9,15 @@ namespace Bull_Eye
     {
         public static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormSettings());
+
+           // Game game = new Game();
+            //game.Start();
+
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new FormSettings());
+            }
         }
     }
 }

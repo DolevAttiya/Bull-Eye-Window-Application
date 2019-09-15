@@ -89,6 +89,7 @@
             this.MinimizeBox = false;
             this.Name = "FormGame";
             this.Text = "Bool Pgia";
+            this.Load += new System.EventHandler(this.FormGame_Load);
             this.ResumeLayout(false);
 
         }

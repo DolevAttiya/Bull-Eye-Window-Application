@@ -25,6 +25,8 @@ namespace Bull_Eye.WindowUI
         }
         private void buttonPurple_Click(object sender, EventArgs e)
         {
+
+           // m_PickedColor = this.BackColor;
             m_PickedColor = Color.Purple;
             this.Visible = false;
         }

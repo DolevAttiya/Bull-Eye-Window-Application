@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bull_Eye.Logics;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,8 +17,16 @@ namespace Bull_Eye.WindowUI
         List<List<Button>> m_Guesses = new List<List<Button>>();
         List<Button> m_GuessArrow = new List<Button>();
         List<List<Button>> m_Answers = new List<List<Button>>();
+
+        //----------
+        GameLogics m_GameLogics;
+        //----------
+
         public FormGame()
         {
+            m_GameLogics = new GameLogics();
+            m_GameLogics.MaxOfGeuss = FormSettings.NumberOfChances;
+
             InitializeComponent();
             GuessesComponent();
         }
@@ -41,8 +50,19 @@ namespace Bull_Eye.WindowUI
                     tempGuessButton.Name = string.Format("buttonGuess{0}Place{1}", i, j);
                     tempGuessButton.Size = new System.Drawing.Size(43, 43);
                     tempGuessButton.UseVisualStyleBackColor = false;
+                   
                     this.Controls.Add(tempGuessButton);
+                     //---------------
+                    tempGuessButton.Click += new System.EventHandler(this.GuessButton_Click); ;
+                    //---------------
+                    //tempGuessButton.Click += (sender, args) =>
+                    //{
+                    //    MessageBox.Show("Some stuff");
+                    //    Close();
+                    //};
+
                     tempList.Add(tempGuessButton);
+                    
 
                 }
                 m_Guesses.Add(tempList);
@@ -92,6 +112,42 @@ namespace Bull_Eye.WindowUI
                 m_Guesses[0][i].Enabled = true;
 
             }
+        }
+
+        private void GuessButton_Click(object sender, EventArgs e)
+        {
+
+            Color guessColor = GetGuessColorFromUser();
+            ((Button)sender).BackColor = guessColor;
+
+
+        }
+
+        public Color GetGuessColorFromUser()
+        {
+            FormColorPicking colorPicking = new FormColorPicking();
+            colorPicking.ShowDialog();
+
+            Color guessColor = colorPicking.PickedColor;
+            return guessColor;
+        }
+
+
+        enum eColor
+        {
+            Purple,
+            Red,
+            Lime,
+            Cyan,
+            Blue,
+            Yellow,
+            Brown,
+            White
+        }
+
+        private void FormGame_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

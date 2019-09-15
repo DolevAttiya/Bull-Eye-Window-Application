@@ -3,6 +3,8 @@ using System.Text;
 using System.Collections.Generic;
 using Bull_Eye.Logics;
 using Bull_Eye.Models;
+using Bull_Eye.WindowUI;
+using System.Windows.Forms;
 
 namespace Bull_Eye.UI
 {
@@ -14,15 +16,37 @@ namespace Bull_Eye.UI
         private GameLogics m_GameLogics;
         public const int k_MaxNumberCount = 4;
         private Board m_Board;
+        //------------
+        private FormSettings form;
+        //------------
+
 
         public Game()
         {
             m_GameLogics = new GameLogics();
-            m_GameLogics.MaxOfGeuss = Dialogs.GetNumberOfGeussFromUser();
-            m_Board = new Board(m_GameLogics.MaxOfGeuss);
+            form = new FormSettings();
+            m_GameLogics.MaxOfGeuss = FormSettings.NumberOfChances;
+
+            Application.EnableVisualStyles();
+         //   Application.SetCompatibleTextRenderingDefault(false);
+           // Application.Run(form);
+
+            // m_GameLogics.MaxOfGeuss = Dialogs.GetNumberOfGeussFromUser();
+            // m_Board = new Board(m_GameLogics.MaxOfGeuss);
+            //------------
+
         }
 
+
         public void Start()
+        {
+            Application.Run(form);
+
+            int g = m_GameLogics.MaxOfGeuss;
+
+        }
+
+        public void Start_Consol_Game()
         {
             m_Board.CreateBoard(m_GameLogics.ListOfGuesses);
             m_GameLogics.setRandomComputerSequence();

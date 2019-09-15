@@ -39,5 +39,6 @@ namespace Bull_Eye.WindowUI
             formGame.ShowDialog();
             this.Close();
         }
+        
     }
 }
