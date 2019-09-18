@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Bull_Eye.Models;
 
 namespace Bull_Eye.WindowUI
 {
@@ -80,20 +81,18 @@ namespace Bull_Eye.WindowUI
                     
 
                 }
-                m_Guesses.Add(tempList);
 
+                m_Guesses.Add(tempList);
                 {
                     Button tempArrowButton = new Button();
-                    tempArrowButton.Enabled = true;
+                    tempArrowButton.Enabled = false;
                     tempArrowButton.Location = new System.Drawing.Point(rightLocation, topLocation + (tempList[0].Bottom - tempList[0].Top) / 4);
                     rightLocation += k_additionToRightLocation;
                     tempArrowButton.Name = string.Format("buttonArrow{0}", i);
                     tempArrowButton.Text = "-->>";
                     tempArrowButton.Size = new System.Drawing.Size(43, 20);
                     tempArrowButton.UseVisualStyleBackColor = false;
-                    //---------------
                     tempArrowButton.Click += new System.EventHandler(this.ArrowButton_Click); ;
-                    //---------------
 
                     this.Controls.Add(tempArrowButton);
                     m_GuessArrow.Add(tempArrowButton);
@@ -125,21 +124,34 @@ namespace Bull_Eye.WindowUI
             }
 
             this.Height = m_Guesses[FormSettings.NumberOfChances - 1][k_NumberOfValues - 1].Bottom + 50;
-
             for (int i = 0; i < k_NumberOfValues; i++)
             {
-                m_Guesses[0][i].Enabled = true;
+                m_Guesses[m_GameLogics.CurrentGuess][i].Enabled = true;
 
             }
         }
 
         private void GuessButton_Click(object sender, EventArgs e)
         {
-
             Color guessColor = GetGuessColorFromUser();
             ((Button)sender).BackColor = guessColor;
-
-
+            if (isTheRowFullyFilled())
+            {
+                m_GuessArrow[m_GameLogics.CurrentGuess].Enabled = true;
+            }
+        }
+        private bool isTheRowFullyFilled()
+        {
+            bool o_AreAllButtonCollored = true;
+            foreach (Button buttonToCheckIfCollored in m_Guesses[m_GameLogics.CurrentGuess])
+            {
+                if (buttonToCheckIfCollored.BackColor == SystemColors.Control)
+                {
+                    o_AreAllButtonCollored = false;
+                    break;
+                }
+            }
+            return o_AreAllButtonCollored;
         }
 
         public Color GetGuessColorFromUser()
@@ -155,16 +167,16 @@ namespace Bull_Eye.WindowUI
         {
             StringBuilder colorGuess = new StringBuilder();
             
-            for (int i = 0; i < k_NumberOfValues; i++)
+            foreach(Button buttonToManipulate in m_Guesses[m_GameLogics.CurrentGuess])
             {
-                m_Guesses[0][i].Enabled = false;
-                string charOfColor = m_ColorsToChar[m_Guesses[0][i].BackColor.Name];
+                buttonToManipulate.Enabled = false;
+                string charOfColor = m_ColorsToChar[buttonToManipulate.BackColor.Name];
                 colorGuess.Append(charOfColor);
             }
-            ;
+            m_GuessArrow[m_GameLogics.CurrentGuess].Enabled = false;
+
             m_GameLogics.AddNewGuess(colorGuess.ToString());
             ShowResultOfGeuss();
-
             if (m_GameLogics.isWin(m_GameLogics.getLastGuess().Result))
             {
                 ShowComputerPin();
@@ -175,10 +187,10 @@ namespace Bull_Eye.WindowUI
             }
             else
             {
-                int amountOfGeuss = m_GameLogics.getAmountOfGuesses();
-                for (int i = 0; i < k_NumberOfValues; i++)
+                m_GameLogics.CurrentGuess++;
+                foreach (Button buttonToEnable in m_Guesses[m_GameLogics.CurrentGuess])
                 {
-                    m_Guesses[amountOfGeuss][i].Enabled = true;
+                    buttonToEnable.Enabled = true;
                 }
             }
           
@@ -190,7 +202,22 @@ namespace Bull_Eye.WindowUI
          */
         private void ShowResultOfGeuss()
         {
-            throw new NotImplementedException();
+            char bull = 'V', cow= 'X';
+            int index = 0;
+            foreach (char charInResultString in m_GameLogics.getLastGuess().Result)
+            {
+                if (charInResultString == bull)
+                {
+                    m_Answers[m_GameLogics.CurrentGuess][index].BackColor = Color.Black;
+
+                }
+                else if (charInResultString == cow)
+                {
+                    m_Answers[m_GameLogics.CurrentGuess][index].BackColor = Color.Yellow;
+                }
+                index++;
+            }
+            
         }
 
         /*

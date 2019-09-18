@@ -19,11 +19,12 @@
         public const int k_MaxNumberCount = 4;
         private string m_ComputerSequence;
         private List<Pin> m_UserGeussPinList;
-        private int m_maxOfGeuss;
+        private int m_MaxOfGeuss;
+        private int m_CurrentGuess;
 
         public GameLogics()
         {
-
+            m_CurrentGuess = 0;
             m_UserGeussPinList = new List<Pin>();
             m_UserGeussPinList.Add(new Pin(k_StartPins, string.Empty));
             setRandomComputerSequence();
@@ -33,12 +34,12 @@
         {
             get
             {
-                return m_maxOfGeuss;
+                return m_MaxOfGeuss;
             }
 
             set
             {
-                m_maxOfGeuss = value;
+                m_MaxOfGeuss = value;
             }
         }
 
@@ -128,7 +129,7 @@
         {
             int numberOfGeuss = getAmountOfGuesses();
             bool hasLost = false;
-            if (numberOfGeuss == m_maxOfGeuss)
+            if (numberOfGeuss == m_MaxOfGeuss)
             {
                 m_UserGeussPinList.ElementAt(0).Geuss = m_ComputerSequence;
                 hasLost = true;
@@ -160,6 +161,19 @@
             get
             {
                 return m_UserGeussPinList;
+            }
+        }
+
+        public int CurrentGuess
+        {
+            get
+            {
+                return m_CurrentGuess;
+            }
+
+            set
+            {
+                m_CurrentGuess = value;
             }
         }
 
