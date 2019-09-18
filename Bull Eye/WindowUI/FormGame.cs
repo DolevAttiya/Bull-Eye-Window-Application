@@ -153,6 +153,7 @@ namespace Bull_Eye.WindowUI
 
         private void ArrowButton_Click(object sender, EventArgs e)
         {
+            ((Button)sender).Enabled = false;
             StringBuilder colorGuess = new StringBuilder();
 
             for (int i = 0; i < k_NumberOfValues; i++)
