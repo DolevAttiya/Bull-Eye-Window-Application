@@ -142,7 +142,7 @@ namespace Bull_Eye.WindowUI
             }
         }
 
-        private bool isNewGuessColor(Color i_guessColor)
+        private bool isNewGuessColor(Color i_GuessColor)
         {
             int countCurrentColor = 0;
             bool haveOneColor = true;
@@ -150,7 +150,7 @@ namespace Bull_Eye.WindowUI
             for (int i = 0; i < k_NumberOfValues; i++)
             {
                 string c = m_Guesses[m_GameLogics.CurrentGuess][i].BackColor.Name;
-                if (m_Guesses[m_GameLogics.CurrentGuess][i].BackColor.Name == i_guessColor.Name)
+                if (m_Guesses[m_GameLogics.CurrentGuess][i].BackColor.Name == i_GuessColor.Name)
                 {
                     //countCurrentColor++;
                   //  if(countCurrentColor > 1)
