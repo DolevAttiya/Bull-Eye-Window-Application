@@ -49,7 +49,7 @@ namespace Bull_Eye.UI
         public void Start_Consol_Game()
         {
             m_Board.CreateBoard(m_GameLogics.ListOfGuesses);
-            m_GameLogics.setRandomComputerSequence();
+            //m_GameLogics.setRandomComputerSequence();
             string guessInputFromUser = string.Empty;
 
             while (!guessInputFromUser.Equals(k_Quit) && m_GameLogics.MaxOfGeuss != 0)

@@ -43,7 +43,7 @@
             }
         }
 
-        public void setRandomComputerSequence()
+        private void setRandomComputerSequence()
         {
             StringBuilder randomString = new StringBuilder();
             char charTorandom = char.MinValue;
@@ -184,5 +184,15 @@
             m_UserGeussPinList.Add(new Pin(k_StartPins, string.Empty));
             setRandomComputerSequence();
         }
+
+        public string ComputerSequence
+        {
+            get
+            {
+                return m_ComputerSequence;
+            }
+        }
+
+
     }
 }

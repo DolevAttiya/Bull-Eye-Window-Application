@@ -66,9 +66,9 @@ namespace Bull_Eye.WindowUI
                     tempGuessButton.Name = string.Format("buttonGuess{0}Place{1}", i, j);
                     tempGuessButton.Size = new System.Drawing.Size(43, 43);
                     tempGuessButton.UseVisualStyleBackColor = false;
-                   
+
                     this.Controls.Add(tempGuessButton);
-                     //---------------
+                    //---------------
                     tempGuessButton.Click += new System.EventHandler(this.GuessButton_Click); ;
                     //---------------
                     //tempGuessButton.Click += (sender, args) =>
@@ -78,7 +78,7 @@ namespace Bull_Eye.WindowUI
                     //};
 
                     tempList.Add(tempGuessButton);
-                    
+
 
                 }
 
@@ -165,6 +165,7 @@ namespace Bull_Eye.WindowUI
 
         private void ArrowButton_Click(object sender, EventArgs e)
         {
+            ((Button)sender).Enabled = false;
             StringBuilder colorGuess = new StringBuilder();
             
             foreach(Button buttonToManipulate in m_Guesses[m_GameLogics.CurrentGuess])
@@ -193,7 +194,7 @@ namespace Bull_Eye.WindowUI
                     buttonToEnable.Enabled = true;
                 }
             }
-          
+
         }
 
         /*
@@ -215,22 +216,55 @@ namespace Bull_Eye.WindowUI
                 {
                     m_Answers[m_GameLogics.CurrentGuess][index].BackColor = Color.Yellow;
                 }
+
                 index++;
-            }
-            
+            }   
         }
+
 
         /*
          * TODO: show the color of the computer pin in 4 button in top of screen
          */
         private void ShowComputerPin()
         {
-            throw new NotImplementedException();
+
+            string computerSequence = m_GameLogics.ComputerSequence;
+            string colorOfButton;
+
+        
+        
+            colorOfButton = getKeyFromValue(m_ColorsToChar, computerSequence[0].ToString());
+            this.buttonComputerGuess1.BackColor = Color.FromName(colorOfButton);
+
+            colorOfButton = getKeyFromValue(m_ColorsToChar, computerSequence[1].ToString());
+            this.buttonComputerGuess2.BackColor = Color.FromName(colorOfButton);
+
+            colorOfButton = getKeyFromValue(m_ColorsToChar, computerSequence[2].ToString());
+            this.buttonComputerGuess3.BackColor = Color.FromName(colorOfButton);
+
+            colorOfButton = getKeyFromValue(m_ColorsToChar, computerSequence[3].ToString());
+            this.buttonComputerGuess4.BackColor = Color.FromName(colorOfButton);
+            
         }
 
         private void FormGame_Load(object sender, EventArgs e)
         {
 
         }
-    }
+
+        private string getKeyFromValue(Dictionary<string, string> i_dic, string i_Val)
+        {
+            string betaKey = "";
+            foreach (KeyValuePair<string, string> pair in i_dic)
+            {
+                if (pair.Value == i_Val)
+                {
+                    betaKey = pair.Key; // Found
+                    break;
+                }
+            }
+            return betaKey;
+        }
+    } 
 }
+
