@@ -26,6 +26,7 @@
 
             m_UserGeussPinList = new List<Pin>();
             m_UserGeussPinList.Add(new Pin(k_StartPins, string.Empty));
+            setRandomComputerSequence();
         }
 
         public int MaxOfGeuss

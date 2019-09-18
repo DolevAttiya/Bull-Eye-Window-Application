@@ -20,6 +20,7 @@ namespace Bull_Eye.WindowUI
 
         //----------
         GameLogics m_GameLogics;
+        Dictionary<string, string> m_ColorsToChar;
         //----------
 
         public FormGame()
@@ -29,6 +30,20 @@ namespace Bull_Eye.WindowUI
 
             InitializeComponent();
             GuessesComponent();
+            InitializeColorsToChar();
+        }
+
+        private void InitializeColorsToChar()
+        {
+            m_ColorsToChar = new Dictionary<string, string>();
+            m_ColorsToChar.Add("Purple", "A");
+            m_ColorsToChar.Add("Red", "B");
+            m_ColorsToChar.Add("Lime", "C");
+            m_ColorsToChar.Add("Cyan", "D");
+            m_ColorsToChar.Add("Blue", "E");
+            m_ColorsToChar.Add("Yellow", "F");
+            m_ColorsToChar.Add("Brown", "G");
+            m_ColorsToChar.Add("White", "H");
         }
 
         private void GuessesComponent()
@@ -69,13 +84,17 @@ namespace Bull_Eye.WindowUI
 
                 {
                     Button tempArrowButton = new Button();
-                    tempArrowButton.Enabled = false;
+                    tempArrowButton.Enabled = true;
                     tempArrowButton.Location = new System.Drawing.Point(rightLocation, topLocation + (tempList[0].Bottom - tempList[0].Top) / 4);
                     rightLocation += k_additionToRightLocation;
                     tempArrowButton.Name = string.Format("buttonArrow{0}", i);
                     tempArrowButton.Text = "-->>";
                     tempArrowButton.Size = new System.Drawing.Size(43, 20);
                     tempArrowButton.UseVisualStyleBackColor = false;
+                    //---------------
+                    tempArrowButton.Click += new System.EventHandler(this.ArrowButton_Click); ;
+                    //---------------
+
                     this.Controls.Add(tempArrowButton);
                     m_GuessArrow.Add(tempArrowButton);
                 }
@@ -132,17 +151,54 @@ namespace Bull_Eye.WindowUI
             return guessColor;
         }
 
-
-        enum eColor
+        private void ArrowButton_Click(object sender, EventArgs e)
         {
-            Purple,
-            Red,
-            Lime,
-            Cyan,
-            Blue,
-            Yellow,
-            Brown,
-            White
+            StringBuilder colorGuess = new StringBuilder();
+            
+            for (int i = 0; i < k_NumberOfValues; i++)
+            {
+                m_Guesses[0][i].Enabled = false;
+                string charOfColor = m_ColorsToChar[m_Guesses[0][i].BackColor.Name];
+                colorGuess.Append(charOfColor);
+            }
+            ;
+            m_GameLogics.AddNewGuess(colorGuess.ToString());
+            ShowResultOfGeuss();
+
+            if (m_GameLogics.isWin(m_GameLogics.getLastGuess().Result))
+            {
+                ShowComputerPin();
+            }
+            else if (m_GameLogics.isLost())
+            {
+                ShowComputerPin();
+            }
+            else
+            {
+                int amountOfGeuss = m_GameLogics.getAmountOfGuesses();
+                for (int i = 0; i < k_NumberOfValues; i++)
+                {
+                    m_Guesses[amountOfGeuss][i].Enabled = true;
+                }
+            }
+          
+        }
+
+        /*
+         * TODO: show the result on the current guess.
+         *       set the color (black or yellow) in the for right button 
+         */
+        private void ShowResultOfGeuss()
+        {
+            throw new NotImplementedException();
+        }
+
+        /*
+         * TODO: show the color of the computer pin in 4 button in top of screen
+         */
+        private void ShowComputerPin()
+        {
+            throw new NotImplementedException();
         }
 
         private void FormGame_Load(object sender, EventArgs e)
