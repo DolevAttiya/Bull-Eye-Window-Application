@@ -129,6 +129,7 @@
         {
             int numberOfGeuss = getAmountOfGuesses();
             bool hasLost = false;
+
             if (numberOfGeuss == m_MaxOfGeuss)
             {
                 m_UserGeussPinList.ElementAt(0).Geuss = m_ComputerSequence;
@@ -142,6 +143,7 @@
         {
             string resultOfUserGuess = getResultOnGuess(m_ComputerSequence, i_Guess);
             Pin currentGeussFromUser = new Pin(i_Guess, resultOfUserGuess);
+
             m_UserGeussPinList.Add(currentGeussFromUser);
         }
 
@@ -191,7 +193,5 @@
                 return m_ComputerSequence;
             }
         }
-
-
     }
 }

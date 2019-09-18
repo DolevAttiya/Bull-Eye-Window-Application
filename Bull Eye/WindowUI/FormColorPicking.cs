@@ -23,9 +23,9 @@ namespace Bull_Eye.WindowUI
         {
             get { return m_PickedColor; }
         }
+
         private void buttonPurple_Click(object sender, EventArgs e)
         {
-
             m_PickedColor = Color.Purple;
             this.Visible = false;
         }
