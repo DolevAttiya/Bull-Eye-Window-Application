@@ -1,6 +1,6 @@
 ﻿namespace Bull_Eye.WindowUI
 {
-    partial class FormGame
+    public partial class FormGame
     {
         /// <summary>
         /// Required designer variable.
@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -89,7 +90,6 @@
             this.MinimizeBox = false;
             this.Name = "FormGame";
             this.Text = "Bool Pgia";
-            this.Load += new System.EventHandler(this.FormGame_Load);
             this.ResumeLayout(false);
 
         }

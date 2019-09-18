@@ -1,5 +1,4 @@
-﻿using Bull_Eye.Logics;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,18 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Bull_Eye.Models;
+using Bull_Eye.Logics;
 
 namespace Bull_Eye.WindowUI
 {
     public partial class FormGame : Form
     {
         private const int k_NumberOfValues = 4;
-        List<List<Button>> m_Guesses = new List<List<Button>>();
-        List<Button> m_GuessArrow = new List<Button>();
-        List<List<Button>> m_Answers = new List<List<Button>>();
-
-        GameLogics m_GameLogics;
-        Dictionary<string, string> m_ColorsToChar;
+        private GameLogics m_GameLogics;
+        private List<List<Button>> m_Guesses = new List<List<Button>>();
+        private List<Button> m_GuessArrow = new List<Button>();
+        private List<List<Button>> m_Answers = new List<List<Button>>();
+        private Dictionary<string, string> m_ColorsToChar;
         
         public FormGame()
         {
@@ -64,37 +63,27 @@ namespace Bull_Eye.WindowUI
                     tempGuessButton.Name = string.Format("buttonGuess{0}Place{1}", i, j);
                     tempGuessButton.Size = new System.Drawing.Size(43, 43);
                     tempGuessButton.UseVisualStyleBackColor = false;
-
                     this.Controls.Add(tempGuessButton);
-                    //---------------
-                    tempGuessButton.Click += new System.EventHandler(this.GuessButton_Click); ;
-                    //---------------
-                    //tempGuessButton.Click += (sender, args) =>
-                    //{
-                    //    MessageBox.Show("Some stuff");
-                    //    Close();
-                    //};
-
+                    tempGuessButton.Click += new System.EventHandler(this.GuessButton_Click);
                     tempList.Add(tempGuessButton);
-
-
                 }
 
                 m_Guesses.Add(tempList);
                 {
                     Button tempArrowButton = new Button();
                     tempArrowButton.Enabled = false;
-                    tempArrowButton.Location = new System.Drawing.Point(rightLocation, topLocation + (tempList[0].Bottom - tempList[0].Top) / 4);
+                    tempArrowButton.Location = new System.Drawing.Point(rightLocation, topLocation + ((tempList[0].Bottom - tempList[0].Top) / 4));
                     rightLocation += k_additionToRightLocation;
                     tempArrowButton.Name = string.Format("buttonArrow{0}", i);
                     tempArrowButton.Text = "-->>";
                     tempArrowButton.Size = new System.Drawing.Size(43, 20);
                     tempArrowButton.UseVisualStyleBackColor = false;
-                    tempArrowButton.Click += new System.EventHandler(this.ArrowButton_Click); ;
+                    tempArrowButton.Click += new System.EventHandler(this.ArrowButton_Click);
 
                     this.Controls.Add(tempArrowButton);
                     m_GuessArrow.Add(tempArrowButton);
                 }
+                
                 int additionToRightAnswerLocation = 25;
 
                 tempList = new List<Button>();
@@ -134,7 +123,6 @@ namespace Bull_Eye.WindowUI
             if (isNewGuessColor(guessColor))
             {
                 ((Button)sender).BackColor = guessColor;
-
                 if (isTheRowFullyFilled())
                 {
                     m_GuessArrow[m_GameLogics.CurrentGuess].Enabled = true;
@@ -155,6 +143,7 @@ namespace Bull_Eye.WindowUI
                     break;
                 }
             }
+            
                 return haveOneColor;
         }
 
@@ -169,6 +158,7 @@ namespace Bull_Eye.WindowUI
                     break;
                 }
             }
+
             return o_AreAllButtonCollored;
         }
 
@@ -177,8 +167,7 @@ namespace Bull_Eye.WindowUI
             FormColorPicking colorPicking = new FormColorPicking();
             colorPicking.ShowDialog();
 
-            Color guessColor = colorPicking.PickedColor;
-            return guessColor;
+            return colorPicking.PickedColor;
         }
 
         private void ArrowButton_Click(object sender, EventArgs e)
@@ -192,8 +181,8 @@ namespace Bull_Eye.WindowUI
                 string charOfColor = m_ColorsToChar[buttonToManipulate.BackColor.Name];
                 colorGuess.Append(charOfColor);
             }
-            m_GuessArrow[m_GameLogics.CurrentGuess].Enabled = false;
 
+            m_GuessArrow[m_GameLogics.CurrentGuess].Enabled = false;
             m_GameLogics.AddNewGuess(colorGuess.ToString());
             ShowResultOfGeuss();
             if (m_GameLogics.isWin(m_GameLogics.getLastGuess().Result))
@@ -212,23 +201,17 @@ namespace Bull_Eye.WindowUI
                     buttonToEnable.Enabled = true;
                 }
             }
-
         }
 
-        /*
-         * TODO: show the result on the current guess.
-         *       set the color (black or yellow) in the for right button 
-         */
         private void ShowResultOfGeuss()
         {
-            char bull = 'V', cow= 'X';
+            char bull = 'V', cow = 'X';
             int index = 0;
             foreach (char charInResultString in m_GameLogics.getLastGuess().Result)
             {
                 if (charInResultString == bull)
                 {
                     m_Answers[m_GameLogics.CurrentGuess][index].BackColor = Color.Black;
-
                 }
                 else if (charInResultString == cow)
                 {
@@ -239,40 +222,24 @@ namespace Bull_Eye.WindowUI
             }   
         }
 
-
-        /*
-         * TODO: show the color of the computer pin in 4 button in top of screen
-         */
         private void ShowComputerPin()
         {
-
             string computerSequence = m_GameLogics.ComputerSequence;
             string colorOfButton;
 
-        
-        
             colorOfButton = getKeyFromValue(m_ColorsToChar, computerSequence[0].ToString());
             this.buttonComputerGuess1.BackColor = Color.FromName(colorOfButton);
-
             colorOfButton = getKeyFromValue(m_ColorsToChar, computerSequence[1].ToString());
             this.buttonComputerGuess2.BackColor = Color.FromName(colorOfButton);
-
             colorOfButton = getKeyFromValue(m_ColorsToChar, computerSequence[2].ToString());
             this.buttonComputerGuess3.BackColor = Color.FromName(colorOfButton);
-
             colorOfButton = getKeyFromValue(m_ColorsToChar, computerSequence[3].ToString());
-            this.buttonComputerGuess4.BackColor = Color.FromName(colorOfButton);
-            
-        }
-
-        private void FormGame_Load(object sender, EventArgs e)
-        {
-
+            this.buttonComputerGuess4.BackColor = Color.FromName(colorOfButton);       
         }
 
         private string getKeyFromValue(Dictionary<string, string> i_dic, string i_Val)
         {
-            string betaKey = "";
+            string betaKey = string.Empty;
             foreach (KeyValuePair<string, string> pair in i_dic)
             {
                 if (pair.Value == i_Val)
@@ -281,8 +248,8 @@ namespace Bull_Eye.WindowUI
                     break;
                 }
             }
+
             return betaKey;
         }
     } 
 }
-

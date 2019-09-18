@@ -8,13 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Bull_Eye.Logics;
+
 namespace Bull_Eye.WindowUI
 {
     public partial class FormSettings : Form
     {
-        private const int k_MinimumNumberOfChances = 4;
-        private const int k_RoundParameter = 7;
         private static int m_NumberOfChances;
+
         public FormSettings()
         {
             m_NumberOfChances = 0;
@@ -27,18 +27,19 @@ namespace Bull_Eye.WindowUI
             m_NumberOfChances = (++m_NumberOfChances) % GameLogics.k_MaxRange;
             buttonNumberOfChances.Text = string.Format("Number of chances: {0}", (m_NumberOfChances + GameLogics.k_MaxNumberCount).ToString());
         }
+
         public static int NumberOfChances
         {
-            get { return m_NumberOfChances+ k_MinimumNumberOfChances; }
+            get { return m_NumberOfChances + GameLogics.k_LowestGuess; }
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
             FormGame formGame = new FormGame();
+
             this.Visible = false;
             formGame.ShowDialog();
             this.Close();
-        }
-        
+        }   
     }
 }
