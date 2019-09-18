@@ -42,7 +42,7 @@
             // buttonPurple
             // 
             this.buttonPurple.BackColor = System.Drawing.Color.Purple;
-            this.buttonPurple.Enabled = true;
+            this.buttonPurple.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonPurple.Location = new System.Drawing.Point(12, 12);
             this.buttonPurple.Name = "buttonPurple";
             this.buttonPurple.Size = new System.Drawing.Size(43, 43);
@@ -53,7 +53,7 @@
             // buttonRed
             // 
             this.buttonRed.BackColor = System.Drawing.Color.Red;
-            this.buttonRed.Enabled = true;
+            this.buttonRed.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonRed.Location = new System.Drawing.Point(61, 12);
             this.buttonRed.Name = "buttonRed";
             this.buttonRed.Size = new System.Drawing.Size(43, 43);
@@ -64,7 +64,7 @@
             // buttonLime
             // 
             this.buttonLime.BackColor = System.Drawing.Color.Lime;
-            this.buttonLime.Enabled = true;
+            this.buttonLime.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonLime.Location = new System.Drawing.Point(110, 12);
             this.buttonLime.Name = "buttonLime";
             this.buttonLime.Size = new System.Drawing.Size(43, 43);
@@ -75,7 +75,7 @@
             // buttonCyan
             // 
             this.buttonCyan.BackColor = System.Drawing.Color.Cyan;
-            this.buttonLime.Enabled = true;
+            this.buttonCyan.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonCyan.Location = new System.Drawing.Point(159, 12);
             this.buttonCyan.Name = "buttonCyan";
             this.buttonCyan.Size = new System.Drawing.Size(43, 43);
@@ -86,7 +86,7 @@
             // buttonBlue
             // 
             this.buttonBlue.BackColor = System.Drawing.Color.Blue;
-            this.buttonLime.Enabled = true;
+            this.buttonBlue.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonBlue.Location = new System.Drawing.Point(12, 61);
             this.buttonBlue.Name = "buttonBlue";
             this.buttonBlue.Size = new System.Drawing.Size(43, 43);
@@ -97,7 +97,7 @@
             // buttonYellow
             // 
             this.buttonYellow.BackColor = System.Drawing.Color.Yellow;
-            this.buttonLime.Enabled = true;
+            this.buttonYellow.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonYellow.Location = new System.Drawing.Point(61, 61);
             this.buttonYellow.Name = "buttonYellow";
             this.buttonYellow.Size = new System.Drawing.Size(43, 43);
@@ -108,7 +108,7 @@
             // buttonBrown
             // 
             this.buttonBrown.BackColor = System.Drawing.Color.Brown;
-            this.buttonLime.Enabled = true;
+            this.buttonBrown.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonBrown.Location = new System.Drawing.Point(110, 61);
             this.buttonBrown.Name = "buttonBrown";
             this.buttonBrown.Size = new System.Drawing.Size(43, 43);
@@ -119,7 +119,7 @@
             // buttonWhite
             // 
             this.buttonWhite.BackColor = System.Drawing.Color.White;
-            this.buttonLime.Enabled = true;
+            this.buttonWhite.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonWhite.Location = new System.Drawing.Point(159, 61);
             this.buttonWhite.Name = "buttonWhite";
             this.buttonWhite.Size = new System.Drawing.Size(43, 43);

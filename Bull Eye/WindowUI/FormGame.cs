@@ -119,10 +119,11 @@ namespace Bull_Eye.WindowUI
 
         private void GuessButton_Click(object sender, EventArgs e)
         {
-            Color guessColor = GetGuessColorFromUser();
+            Button currentButtonClicked = sender as Button;
+            Color guessColor = GetGuessColorFromUser(currentButtonClicked.BackColor);
             if (isNewGuessColor(guessColor))
             {
-                ((Button)sender).BackColor = guessColor;
+                currentButtonClicked.BackColor = guessColor;
                 if (isTheRowFullyFilled())
                 {
                     m_GuessArrow[m_GameLogics.CurrentGuess].Enabled = true;
@@ -162,12 +163,20 @@ namespace Bull_Eye.WindowUI
             return o_AreAllButtonCollored;
         }
 
-        public Color GetGuessColorFromUser()
+        public Color GetGuessColorFromUser(Color i_CurrentColor)
         {
+            Color o_ColorToSet;
             FormColorPicking colorPicking = new FormColorPicking();
-            colorPicking.ShowDialog();
+            if (colorPicking.ShowDialog() == DialogResult.OK)
+            {
+                o_ColorToSet = colorPicking.PickedColor;
+            }
+            else
+            {
+                o_ColorToSet = i_CurrentColor;
+            }
 
-            return colorPicking.PickedColor;
+            return o_ColorToSet;
         }
 
         private void ArrowButton_Click(object sender, EventArgs e)
