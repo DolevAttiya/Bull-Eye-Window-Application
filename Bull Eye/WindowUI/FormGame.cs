@@ -19,11 +19,9 @@ namespace Bull_Eye.WindowUI
         List<Button> m_GuessArrow = new List<Button>();
         List<List<Button>> m_Answers = new List<List<Button>>();
 
-        //----------
         GameLogics m_GameLogics;
         Dictionary<string, string> m_ColorsToChar;
-        //----------
-
+        
         public FormGame()
         {
             m_GameLogics = new GameLogics();
