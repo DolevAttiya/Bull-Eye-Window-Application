@@ -56,7 +56,7 @@ namespace Bull_Eye.UI
             {
                 if (guessInputFromUser.ToLower().Equals(k_Restart))
                 {
-                    m_GameLogics.restart();
+                    m_GameLogics.Restart();
                     m_GameLogics.MaxOfGeuss = Dialogs.GetNumberOfGeussFromUser();
                     m_Board = new Board(m_GameLogics.MaxOfGeuss);
                     m_Board.CreateBoard(m_GameLogics.ListOfGuesses);
@@ -84,7 +84,7 @@ namespace Bull_Eye.UI
 
             if (guessInputFromUser.Equals(k_Restart))
             {
-                m_GameLogics.restart();
+                m_GameLogics.Restart();
             }
             else if (guessInputFromUser.ToUpper().Equals(k_Quit) || m_GameLogics.MaxOfGeuss == 0)
             {

@@ -138,11 +138,10 @@
             return hasLost;
         }
 
-        // $G$ CSS-013 (-3) Input parameters names should start with i_PascaleCase.
-        public void AddNewGuess(string i_guess)
+        public void AddNewGuess(string i_Guess)
         {
-            string resultOfUserGuess = getResultOnGuess(m_ComputerSequence, i_guess);
-            Pin currentGeussFromUser = new Pin(i_guess, resultOfUserGuess);
+            string resultOfUserGuess = getResultOnGuess(m_ComputerSequence, i_Guess);
+            Pin currentGeussFromUser = new Pin(i_Guess, resultOfUserGuess);
             m_UserGeussPinList.Add(currentGeussFromUser);
         }
 
@@ -177,7 +176,7 @@
             }
         }
 
-        public void restart()
+        public void Restart()
         {
             m_UserGeussPinList.Clear();
             Ex02.ConsoleUtils.Screen.Clear();
