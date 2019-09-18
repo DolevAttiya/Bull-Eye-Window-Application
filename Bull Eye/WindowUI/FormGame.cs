@@ -127,19 +127,45 @@ namespace Bull_Eye.WindowUI
             for (int i = 0; i < k_NumberOfValues; i++)
             {
                 m_Guesses[m_GameLogics.CurrentGuess][i].Enabled = true;
-
             }
         }
 
         private void GuessButton_Click(object sender, EventArgs e)
         {
             Color guessColor = GetGuessColorFromUser();
-            ((Button)sender).BackColor = guessColor;
-            if (isTheRowFullyFilled())
+            if (isNewGuessColor(guessColor))
             {
-                m_GuessArrow[m_GameLogics.CurrentGuess].Enabled = true;
+                ((Button)sender).BackColor = guessColor;
+
+                if (isTheRowFullyFilled())
+                {
+                    m_GuessArrow[m_GameLogics.CurrentGuess].Enabled = true;
+                }
             }
         }
+
+        private bool isNewGuessColor(Color i_guessColor)
+        {
+            int countCurrentColor = 0;
+            bool haveOneColor = true;
+
+            for (int i = 0; i < k_NumberOfValues; i++)
+            {
+                string c = m_Guesses[m_GameLogics.CurrentGuess][i].BackColor.Name;
+                if (m_Guesses[m_GameLogics.CurrentGuess][i].BackColor.Name == i_guessColor.Name)
+                {
+                    //countCurrentColor++;
+                  //  if(countCurrentColor > 1)
+                   // {
+                        haveOneColor = false;
+                    break;
+                  //  }
+                }
+            }
+
+                return haveOneColor;
+        }
+
         private bool isTheRowFullyFilled()
         {
             bool o_AreAllButtonCollored = true;
