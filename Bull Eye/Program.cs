@@ -1,5 +1,4 @@
 ﻿using System.Windows.Forms;
-using Bull_Eye.UI;
 using Bull_Eye.WindowUI;
 
 namespace Bull_Eye

@@ -5,7 +5,6 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using Bull_Eye.UI;
     using Bull_Eye.Models;
 
     public class GameLogics

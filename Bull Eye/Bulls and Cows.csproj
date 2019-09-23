@@ -57,9 +57,6 @@
     <Compile Include="Logics\GameLogics.cs" />
     <Compile Include="Models\Pin.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="UI\Dialogs.cs" />
-    <Compile Include="UI\Board.cs" />
-    <Compile Include="UI\Game.cs" />
     <Compile Include="WindowUI\FormColorPicking.cs">
       <SubType>Form</SubType>
     </Compile>
